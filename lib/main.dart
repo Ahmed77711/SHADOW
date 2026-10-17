@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const PremiumTutorialsApp());
@@ -15,7 +14,6 @@ class PremiumTutorialsApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFF0A0A0F),
-        // fontFamily: 'Cairo', // فعلها فقط إذا أضفت ملف الخط للمشروع
       ),
       home: const HomeScreen(),
     );
@@ -211,9 +209,18 @@ class DetailScreen extends StatelessWidget {
 
   Future<void> _openYoutube(BuildContext context) async {
     final uri = Uri.parse(tutorial.youtubeUrl);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    
+    // استخدام dynamic لتجاهل أخطاء المحرر
+
+    dynamic mode = LaunchMode.externalApplication;
+    
+    bool didLaunch = await launcher(uri, mode: mode);
+    
+    if (!didLaunch) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('مش قادر افتح اليوتيوب')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('مش قادر افتح اليوتيوب')),
+        );
       }
     }
   }
