@@ -18,13 +18,13 @@ class PremiumShadowApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF0A0A0F),
         primaryColor: const Color(0xFFD4AF37),
       ),
-      home: const LoginScreen(), // <--- التطبيق يبدأ بشاشة القفل
+      home: const LoginScreen(),
     );
   }
 }
 
 // ==========================================
-// 1. شاشة تسجيل الدخول (القفل)
+// 1. شاشة القفل
 // ==========================================
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isError = false;
 
   void _checkPassword() {
-    if (_passController.text == "12345") { // <--- كلمة المرور هنا
+    if (_passController.text == "12345") {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ==========================================
-// 2. بيانات الدول
+// 2. البيانات
 // ==========================================
 class CountryData {
   final String title;
@@ -137,52 +137,16 @@ class CountryData {
 }
 
 final List<CountryData> countries = [
-  CountryData(
-    title: 'حساب أمريكي',
-    flag: '🇺🇸',
-    subtitle: 'Google Play / Apple ID',
-    gradient: [const Color(0xFF0F52BA), const Color(0xFF041E42)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+usa+account+tutorial',
-  ),
-  CountryData(
-    title: 'حساب فرنسي',
-    flag: '🇫🇷',
-    subtitle: 'للمحتوى الأوروبي',
-    gradient: [const Color(0xFF002395), const Color(0xFFED2939)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+france+account+tutorial',
-  ),
-  CountryData(
-    title: 'حساب بريطاني',
-    flag: '🇬🇧',
-    subtitle: 'أفضل للبرامج المدفوعة',
-    gradient: [const Color(0xFF012169), const Color(0xFFC8102E)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+uk+account+tutorial',
-  ),
-  CountryData(
-    title: 'حساب إماراتي',
-    flag: '🇦🇪',
-    subtitle: 'للمحتوى الخليجي',
-    gradient: [const Color(0xFF00732F), const Color(0xFFFF0000)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+uae+account+tutorial',
-  ),
-  CountryData(
-    title: 'حساب ياباني',
-    flag: '🇯🇵',
-    subtitle: 'للألعاب والأنمي',
-    gradient: [const Color(0xFFBC002D), const Color(0xFF000000)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+japan+account+tutorial',
-  ),
-  CountryData(
-    title: 'حساب كندي',
-    flag: '🇨🇦',
-    subtitle: 'بديل ممتاز للأمريكي',
-    gradient: [const Color(0xFFFF0000), const Color(0xFF000000)],
-    youtubeUrl: 'https://www.youtube.com/results?search_query=create+canada+account+tutorial',
-  ),
+  CountryData(title: 'حساب أمريكي', flag: '🇺🇸', subtitle: 'Google Play', gradient: [const Color(0xFF0F52BA), const Color(0xFF041E42)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+usa+account'),
+  CountryData(title: 'حساب فرنسي', flag: '🇫🇷', subtitle: 'المحتوى الأوروبي', gradient: [const Color(0xFF002395), const Color(0xFFED2939)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+france+account'),
+  CountryData(title: 'حساب بريطاني', flag: '🇬🇧', subtitle: 'البرامج المدفوعة', gradient: [const Color(0xFF012169), const Color(0xFFC8102E)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+uk+account'),
+  CountryData(title: 'حساب إماراتي', flag: '🇦🇪', subtitle: 'المحتوى الخليجي', gradient: [const Color(0xFF00732F), const Color(0xFFFF0000)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+uae+account'),
+  CountryData(title: 'حساب ياباني', flag: '🇯🇵', subtitle: 'الألعاب والأنمي', gradient: [const Color(0xFFBC002D), const Color(0xFF000000)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+japan+account'),
+  CountryData(title: 'حساب كندي', flag: '🇨🇦', subtitle: 'بديل للأمريكي', gradient: [const Color(0xFFFF0000), const Color(0xFF000000)], youtubeUrl: 'https://www.youtube.com/results?search_query=create+canada+account'),
 ];
 
 // ==========================================
-// 3. الشاشة الرئيسية (الشروحات)
+// 3. الشاشة الرئيسية
 // ==========================================
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -202,29 +166,11 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD4AF37).withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFD4AF37).withOpacity(0.5)),
-                      ),
-                      child: const Text(
-                        'PREMIUM • SHADOW TUTORIALS',
-                        style: TextStyle(color: Color(0xFFD4AF37), fontSize: 10, letterSpacing: 2, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'اختر الدولة\nوشاهد الشرح',
-                      style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.w900, height: 1.2),
-                    ),
-                  ],
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  'اختر الدولة\nوشاهد الشرح',
+                  style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.w900, height: 1.2),
                 ),
               ),
               Expanded(
@@ -245,9 +191,7 @@ class HomeScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(colors: country.gradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
                           borderRadius: BorderRadius.circular(24),
-                          boxShadow: [
-                            BoxShadow(color: country.gradient.first.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 8))
-                          ],
+                          boxShadow: [BoxShadow(color: country.gradient.first.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 8))],
                         ),
                         child: Stack(
                           children: [
@@ -291,7 +235,7 @@ class DetailScreen extends StatelessWidget {
     final uri = Uri.parse(country.youtubeUrl);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تعذر فتح رابط اليوتيوب')));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تعذر فتح الرابط')));
       }
     }
   }
